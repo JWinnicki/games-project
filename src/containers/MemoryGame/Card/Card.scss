@@ -1,0 +1,52 @@
+@import '../../../scss/variables.scss';
+
+.card {
+    width: 8em;
+    height: 8em;
+    position: relative;
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    z-index: 1;
+
+    &:hover {
+        cursor: pointer;
+        outline: 3px solid $background-color-second;
+        outline-offset: .5em;
+    }
+
+    &-front,
+    &-back {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        backface-visibility: hidden;
+        transition: all .8s ease;
+        border-radius: 3px;
+        z-index: 1;
+    }
+
+    &-front {
+        background-image: linear-gradient(to top right, rgb(162, 162, 255), rgb(71, 71, 253));
+    }
+
+    &-back {
+        transform: rotateY(180deg);
+        background-color: red;
+    }
+
+    &-active &-front {
+        transform: rotateY(-180deg);
+
+    }
+
+    
+    &-active &-back {
+        transform: rotateY(0);
+
+    }
+
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}

@@ -1,0 +1,108 @@
+@keyframes secondCard {
+    0% {
+        transform: translateX(-21.333em);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0);
+    }   
+}
+
+@keyframes thirdCard {
+    0% {
+        transform: translateX(-42.67em);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0);
+    }   
+}
+
+@keyframes lastCard {
+    0% {
+        transform: translateX(-64em);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0);
+    }   
+}
+
+@keyframes correct {
+    0% {
+        outline-color: rgba(2, 175, 2, 1);
+    }
+
+    20% {
+        outline-color: rgba(2, 175, 2, .5);
+    }
+
+    40% {
+        outline-color: rgba(2, 175, 2, 1);
+    }
+
+    60% {
+        outline-color: rgba(2, 175, 2, .5);
+    }
+
+    80% {
+        outline-color: rgba(2, 175, 2, .5);
+    }
+
+    100% {
+        outline-color: rgba(2, 175, 2, .5);
+    }   
+}
+
+@keyframes incorrect {
+    0% {
+        outline-color: rgba(214, 0, 0, 1);
+    }
+
+    20% {
+        outline-color: rgba(214, 0, 0, .5);
+    }
+
+    40% {
+        outline-color: rgba(214, 0, 0, 1);
+    }
+
+    60% {
+        outline-color: rgba(214, 0, 0, .5);
+    }
+
+    80% {
+        outline-color: rgba(214, 0, 0, .5);
+    }
+
+    100% {
+        outline-color: rgba(214, 0, 0, .5);
+    }   
+}
