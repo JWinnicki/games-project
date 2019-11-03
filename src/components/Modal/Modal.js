@@ -13,13 +13,19 @@ const Modal = props => {
             if(victoryData.name === 'Memory Game') {
                 return (
                     <React.Fragment>
-                        <p>You finished {victoryData.name} in {victoryData.steps} steps and {victoryData.time} seconds!</p>
+                        <p className='Modal-message_p'>You finished {victoryData.name} in {victoryData.steps} steps and {victoryData.time} seconds!</p>
+                    </React.Fragment>
+                );
+            } else if(victoryData.name === 'TicTac Game') {
+                return (
+                    <React.Fragment>
+                        <p className='Modal-message_p'>Player {victoryData.player} won!</p>
                     </React.Fragment>
                 );
             } else {
                 return (
                     <React.Fragment>
-                        <p>Lorem ipsum</p>
+                        <p className='Modal-message_p'>Lorem ipsum</p>
                     </React.Fragment>
                 );
             }
@@ -41,8 +47,8 @@ const Modal = props => {
                 <div className='Modal-message'>
                     {renderMessage()}
                     <div className='Modal-controls'>
-                        <NavLink className='Modal-button Modal-link' to='/' onClick={closeModal}>Main Menu</NavLink>
-                        <button className='Modal-button' onClick={closeModal}>Close</button>
+                        <NavLink className='button Modal-link' to='/' onClick={closeModal}>Main Menu</NavLink>
+                        <button className='button' onClick={closeModal}>Close</button>
                     </div>
                 </div>
             </div>

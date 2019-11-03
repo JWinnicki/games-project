@@ -17,41 +17,17 @@
         }
     }
 
-    &-button {
-        background-color: $background-color-first;
-        width: 8em;
-        padding: .5em;
-        
-        font-size: 1.3em;
-        font-weight: bold;
-        border: none;
-        font-family: inherit;
-        transition: all .2s;
-
-        @include flexCenter;
-
-        &:hover {
-            background-color: $background-color-first_hovered;
-            cursor: pointer;
-        }
-    }
-
     &-container {
         background-color: rgba(255, 255, 255, .8);
         width: 67em;
         min-height: 40em;
         padding: 2em;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
+        border-radius: 3px;
+        @include flexSpaceBetweenColumn;
     }
 
     &-controls {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        @include flexSpaceBetween;
         width: 90%;
         padding-bottom: 2em;
     }

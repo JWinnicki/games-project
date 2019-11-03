@@ -113,7 +113,6 @@ const MemoryMain = props => {
     const { getVictoryData, setShowModal } = useContext(VictoryContext);
 
     useEffect(() => {
-        console.log('mieszanie kart');
         const colorsMerged = [...memoryState.colorsArr, ...memoryState.colorsArr];
         shuffleArray(colorsMerged);
         dispatch({ type: 'SET_SHOULD_RESET',  shouldReset: false});
@@ -165,14 +164,14 @@ const MemoryMain = props => {
                 setTimeout(() => {
                     dispatch({ type: 'SET_SHOULD_HIDE', shouldHide: true });
                     dispatch({ type: 'SET_DISABLED', disabled: false });
-                }, 1000);
+                }, 800);
             } else {
                 if(memoryState.picksArr.length > 0) {
                     dispatch({ type: 'SET_DISABLED', disabled: true });
                     setTimeout(() => {
                         dispatch({ type: 'SET_SHOULD_HIDE', shouldHide: true });
                         dispatch({ type: 'SET_DISABLED', disabled: false });
-                    }, 1000);
+                    }, 800);
                 }
             }
 
@@ -184,7 +183,6 @@ const MemoryMain = props => {
     }
 
     const shuffleArray = array => {
-        console.log('mieszam tablicę');
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
@@ -209,13 +207,12 @@ const MemoryMain = props => {
             return <Card key={index} color={el} animation={animation} getCardInfo={getCardInfo} pickedCards={memoryState.picksArr} shouldHide={memoryState.shouldHide} disabled={memoryState.disabled} guessedCards={memoryState.guessedCards} shouldReset={memoryState.shouldReset} />
         });
     };
-
     return (
         <div className='MemoryMain'>
             <div className='MemoryMain-container'>
                 <div className='MemoryMain-controls'>
-                    <NavLink className='MemoryMain-link MemoryMain-button' to='/'>Main Menu</NavLink>
-                    <button onClick={resetGame} className='MemoryMain-button'>Reset</button>
+                    <NavLink className='MemoryMain-link button' to='/'>Main Menu</NavLink>
+                    <button onClick={resetGame} className='button'>Reset</button>
                     <div>
                         <p className='MemoryMain-text'>Steps: {memoryState.counter}</p>
                     </div>

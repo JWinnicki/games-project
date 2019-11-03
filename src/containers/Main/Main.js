@@ -7,7 +7,7 @@ const Main = props => {
     return (
         <div className='Main'>
             <MainMenuItem icon='card' title='Memory game' to='/MemoryGame' />
-            <MainMenuItem icon='card' title='Memory game' to='/' />
+            <MainMenuItem icon='tic-tac-toe' title='Tic Tac game' to='/TicTacGame' />
             <MainMenuItem icon='card' title='Memory game' to='/' />
         </div>
     );

@@ -1,0 +1,48 @@
+@import '../../../scss//mixins.scss';
+@import '../../../scss/variables';
+
+.TicTacTile {
+    @include flexCenter;
+    border: 4px solid $background-color-second;
+
+    height: 10em;
+    width: 10em;
+
+    &-p {
+        font-size: 5em;
+        font-weight: bold;
+    }
+    &:nth-child(1) {
+        border-top: none;
+        border-left: none;
+    }
+    &:nth-child(2) {
+        border-top: none;
+    }
+    &:nth-child(3) {
+        border-top: none;
+        border-right: none;
+    }
+    &:nth-child(4) {
+        border-left: none;
+    }
+    &:nth-child(6) {
+        border-right: none;
+    }
+    &:nth-child(7) {
+        border-left: none;
+        border-bottom: none;
+    }
+    &:nth-child(8) {
+        border-bottom: none;
+    }
+    &:nth-child(9) {
+        border-bottom: none;
+        border-right: none;
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(221, 221, 221, 0.8);
+    }
+}

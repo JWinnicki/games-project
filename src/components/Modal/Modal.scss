@@ -52,11 +52,14 @@
     }
 
     &-message {
-        font-size: 1.5em;
         margin-top: 1em;
         padding: 1em;
         width: 100%;
         text-align: center;
+
+        &_p {
+            font-size: 1.5em;
+        }
     }
 
     &-controls {
@@ -73,23 +76,6 @@
         &:link {
             text-decoration: none;
             color: black;
-        }
-    }
-
-    &-button {
-        background-color: $background-color-first;
-        transition: all .2s;
-        width: 8em;
-        padding: .5em;
-        border: none;
-        font-family: inherit;
-        font-weight: bold;
-        font-size: 1em;
-        text-align: center;
-
-        &:hover {
-            background-color: $background-color-first_hovered;
-            cursor: pointer;
         }
     }
 
