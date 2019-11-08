@@ -13,6 +13,9 @@ const TicTacMain = props => {
     const [xArr, setXArr] = useState([]);
     const [oArr, setOArr] = useState([]);
     const [victory, setVictory] = useState(false);
+    const [shouldReset, setShouldReset] = useState(false);
+    const [firstPlayerName, setFirstPlayerName] = useState('Player 1');
+    const [secondPlayerName, setSecondPlayerName] = useState('Player 2');
     //const [winner, setWinner] = useState('');
 
     
@@ -33,27 +36,31 @@ const TicTacMain = props => {
             if(arr.includes(el[0]) && arr.includes(el[1]) && arr.includes(el[2])) {
                 setVictory(true);
                 if(turn === 'X') {
-                    //setWinner('O');
-                    getVictoryData({ name: 'TicTac Game', player: 'O'});
-                    console.log('wygrał O');
+                    getVictoryData({ name: 'TicTac Game', player: secondPlayerName});
                 } else {
-                    //setWinner('X');
-                    getVictoryData({ name: 'TicTac Game', player: 'X'});
-                    console.log('wygrał X');
+                    getVictoryData({ name: 'TicTac Game', player: firstPlayerName});
                 }
                 setShowModal(true);
             }
         });
-    }, [turn, getVictoryData, setShowModal])
+    }, [turn, getVictoryData, setShowModal, firstPlayerName, secondPlayerName])
 
     useEffect(() => {
-        /* console.log(xArr);
-        console.log(oArr); */
         checkIfVictory(xArr);
         checkIfVictory(oArr);
 
         return () => {}
     }, [checkIfVictory, xArr, oArr]);
+
+    useEffect(() => {
+        if(shouldReset) {
+            setShouldReset(false);
+            setTurn('X');
+            setXArr([]);
+            setOArr([]);
+            setVictory(false);
+        }
+    }, [shouldReset])
 
     const onClickHandler = id => {
         if(!victory) {
@@ -69,18 +76,21 @@ const TicTacMain = props => {
 
     const renderGrid = () => {
         const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-        //console.log(...arr);
-        return arr.map(el => <TicTacTile victory={victory} id={el} onClickTile={onClickHandler} currentTurn={turn} key={el} />)
+        return arr.map(el => <TicTacTile reset={shouldReset} victory={victory} id={el} onClickTile={onClickHandler} currentTurn={turn} key={el} />)
     }
 
     return (
         <div className='TicTacMain'>
             <div className='TicTacMain-container'>
                 <div className='TicTacMain-controls'>
-                    <div>Player 1</div>
+                    <div>
+                        <input className={`TicTacMain-input ${turn === 'X' ? 'TicTacMain-input--active' : ''}`} value={firstPlayerName} onChange={e => setFirstPlayerName(e.target.value)} />
+                    </div>
                     <NavLink to='/' className='button TicTacMain-link'>Main Menu</NavLink>
-                    <button className='button'>Reset</button>
-                    <div>Player 2</div>
+                    <button className='button' onClick={() => setShouldReset(true)}>Reset</button>
+                    <div>
+                        <input className={`TicTacMain-input ${turn === 'O' ? 'TicTacMain-input--active' : ''}`} value={secondPlayerName} onChange={e => setSecondPlayerName(e.target.value)} />
+                    </div>
                 </div>
                 <div className='TicTacMain-grid'>
                     {renderGrid()}

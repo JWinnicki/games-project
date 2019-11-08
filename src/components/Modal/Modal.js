@@ -19,7 +19,7 @@ const Modal = props => {
             } else if(victoryData.name === 'TicTac Game') {
                 return (
                     <React.Fragment>
-                        <p className='Modal-message_p'>Player {victoryData.player} won!</p>
+                        <p className='Modal-message_p'>{victoryData.player} won!</p>
                     </React.Fragment>
                 );
             } else {

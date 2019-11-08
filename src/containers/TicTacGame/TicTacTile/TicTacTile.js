@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './TicTacTile.scss';
 
 const TicTacTile = props => {
     const [isActive, setIsAcive] = useState(false);
     const [turn, setTurn] = useState('');
+    const { reset } = props;
 
     const onClickHandler = () => {
         if(!isActive && !props.victory) {
@@ -13,6 +14,13 @@ const TicTacTile = props => {
             props.onClickTile(props.id);
         }
     }
+
+    useEffect(() => {
+        if(reset) {
+            setIsAcive(false);
+        }
+    }, [reset])
+
 
     return (
         <div onClick={onClickHandler} className='TicTacTile'>

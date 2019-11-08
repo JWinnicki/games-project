@@ -13,14 +13,14 @@
         background-color: rgba(255, 255, 255, 0.8);
         border-radius: 3px;
         @include flexSpaceBetweenColumn;
-        padding: 1em;
+        padding: 2em;
     }
 
     &-controls {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 80%;
+        width: 90%;
     }
 
     &-link {
@@ -39,5 +39,19 @@
         height: 30em;
         justify-items: stretch;
         align-items: stretch;
+    }
+
+    &-input {
+        width: 7em;
+        font-size: 1.4em;
+        font-family: inherit;
+        padding: .5em;
+        border: none;
+        background-color: transparent;
+        text-align: center;
+
+        &--active {
+            border: 2px solid $background-color-first;
+        }
     }
 }
