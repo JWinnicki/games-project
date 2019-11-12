@@ -8,7 +8,7 @@ const Main = props => {
         <div className='Main'>
             <MainMenuItem icon='card' title='Memory game' to='/MemoryGame' />
             <MainMenuItem icon='tic-tac-toe' title='Tic Tac game' to='/TicTacGame' />
-            <MainMenuItem icon='card' title='Memory game' to='/' />
+            <MainMenuItem icon='card' title='snake - in progress' to='/SnakeGame' />
         </div>
     );
 }

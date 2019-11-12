@@ -1,0 +1,26 @@
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+
+.SnakeGameMain {
+    width: 100%;
+    min-height: 40em;
+
+    @include flexCenter;
+
+    &-container {
+        background-color: rgba(255, 255, 255, .8);
+        width: 67em;
+        min-height: 40em;
+        padding: 2em;
+        border-radius: 3px;
+        @include flexSpaceBetweenColumn;
+    }
+
+    &-playArea {
+        width: 36em;
+        height: 36em;
+        border: 5px solid black;
+        position: relative;
+    }
+}
+

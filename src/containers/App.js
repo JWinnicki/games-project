@@ -9,6 +9,7 @@ import Footer from '../components/Footer/Footer';
 import MemoryMain from './MemoryGame/MemoryMain/MemoryMain';
 import Modal from '../components/Modal/Modal';
 import TicTacMain from './TicTacGame/TicTacMain/TicTacMain';
+import SnakeGameMain from './SnakeGame/SnakeGameMain/SnakeGameMain';
 
 const App = () => {
 
@@ -21,6 +22,7 @@ const App = () => {
       <main>
         <Route path='/MemoryGame' component={MemoryMain} />
         <Route path='/TicTacGame' component={TicTacMain} />
+        <Route path='/SnakeGame' component={SnakeGameMain} />
         <Route path='/' exact component={Main} />
       </main>
       <footer>
