@@ -34,7 +34,27 @@ const SnakeGameMain = props => {
         }
     }
 
-    useEffect(() => {
+    useEffect(() => { //Zbieranie jedzenia i losowanie nowej pozycji jedzienia
+        if(foodPosition[0] === headPosition[0] && foodPosition[1] === headPosition[1]) {
+            setFoodPosition(getRandomNumber());
+        }
+    }, [headPosition, foodPosition])
+
+    useEffect(() => { // natychmiastowy ruch w nowym kierunku
+        if(direction === 'RIGHT') {
+            setHeadPosition(prev => [prev[0], prev[1] + 2]);
+        } else if (direction === 'LEFT') {
+            setHeadPosition(prev => [prev[0], prev[1] - 2]);
+        } else if (direction === 'UP') {
+            setHeadPosition(prev => [prev[0] - 2, prev[1]]);
+        } else {
+            setHeadPosition(prev => [prev[0] + 2, prev[1]]);
+        }
+        
+        return () => {};
+    }, [direction]);
+
+    useEffect(() => { // ruch snake'a w czasie
         let interval = ''
         if(headPosition[0] >= 0 && headPosition[0] <= 98 && headPosition[1] >= 0 && headPosition[1] <= 98) {
             interval = setInterval(() => {
@@ -47,7 +67,7 @@ const SnakeGameMain = props => {
                 } else {
                     setHeadPosition(prev => [prev[0] + 2, prev[1]]);
                 }
-            }, 200);
+            }, 100);
         }
         return () => clearInterval(interval);
     }, [headPosition, direction]);
