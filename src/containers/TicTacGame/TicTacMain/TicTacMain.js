@@ -46,11 +46,12 @@ const TicTacMain = props => {
     }, [turn, getVictoryData, setShowModal, firstPlayerName, secondPlayerName])
 
     useEffect(() => {
-        checkIfVictory(xArr);
-        checkIfVictory(oArr);
-
+        if(!victory) {
+            checkIfVictory(xArr);
+            checkIfVictory(oArr);
+        }
         return () => {}
-    }, [checkIfVictory, xArr, oArr]);
+    }, [checkIfVictory, xArr, oArr, victory]);
 
     useEffect(() => {
         if(shouldReset) {
