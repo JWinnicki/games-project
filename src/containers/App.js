@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 
 import './App.scss';
 import '../scss/components/_button.scss';
+import '../scss/components/_link.scss';
 import Header from '../components/Header/Header';
 import Main from './Main/Main';
 import Footer from '../components/Footer/Footer';

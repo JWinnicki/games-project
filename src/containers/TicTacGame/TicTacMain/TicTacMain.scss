@@ -23,15 +23,6 @@
         width: 90%;
     }
 
-    &-link {
-        &:active,
-        &:visited,
-        &:link {
-            text-decoration: none;
-            color: black;
-        }
-    }
-
     &-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);

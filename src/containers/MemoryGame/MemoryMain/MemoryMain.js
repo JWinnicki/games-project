@@ -211,7 +211,7 @@ const MemoryMain = props => {
         <div className='MemoryMain'>
             <div className='MemoryMain-container'>
                 <div className='MemoryMain-controls'>
-                    <NavLink className='MemoryMain-link button' to='/'>Main Menu</NavLink>
+                    <NavLink className='link button' to='/'>Main Menu</NavLink>
                     <button onClick={resetGame} className='button'>Reset</button>
                     <div>
                         <p className='MemoryMain-text'>Steps: {memoryState.counter}</p>

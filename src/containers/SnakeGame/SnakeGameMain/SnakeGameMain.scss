@@ -16,11 +16,49 @@
         @include flexSpaceBetweenColumn;
     }
 
+    &-controls {
+        @include flexSpaceBetween;
+        width: 100%;
+        padding: 1em;
+    }
+
     &-playArea {
         width: 36em;
         height: 36em;
         border: 5px solid black;
         position: relative;
+    }
+
+    &-levelDiv {
+        @include flexSpaceBetween;
+        min-width: 10.6em;
+    }
+
+    &-LevelButton {
+        font-weight: bold;
+        font-family: inherit;
+        background-color: $background-color-first;
+        border: none;
+        transition: all .2s;
+        width: 1.5em;
+        font-size: 1.6em;
+        padding: .2em;
+        @include flexCenter;
+
+        &:hover {
+            background-color: $background-color-first_hovered;
+            cursor: pointer;
+        }
+    }
+
+    &-p {
+        font-size: 1.4em;
+        font-weight: bold;
+        padding: 0 .2em;
+    }
+
+    &-scoreDiv {
+        min-width: 7em;
     }
 }
 
