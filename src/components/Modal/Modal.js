@@ -22,6 +22,12 @@ const Modal = props => {
                         <p className='Modal-message_p'>{victoryData.player} won!</p>
                     </React.Fragment>
                 );
+            } else if(victoryData.name === 'Snake Game') {
+                return (
+                    <React.Fragment>
+                        <p className='Modal-message_p'>You collected {victoryData.score} points!</p>
+                    </React.Fragment>
+                );
             } else {
                 return (
                     <React.Fragment>
@@ -42,7 +48,7 @@ const Modal = props => {
             <div className='Modal-backdrop' onClick={closeModal}></div>
             <div className='Modal-body'>
                 <div className='Modal-titleDiv'>
-                    <h1 className='Modal-h1'>Victory!</h1>
+                    <h1 className='Modal-h1'>{victoryData.name === 'Snake Game' ? 'Crushed!' : 'Victory!'}</h1>
                 </div>
                 <div className='Modal-message'>
                     {renderMessage()}

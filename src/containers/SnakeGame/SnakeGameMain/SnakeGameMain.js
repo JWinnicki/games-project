@@ -1,9 +1,10 @@
-import React, { useEffect, /* useState, */ useReducer, useCallback } from 'react';
+import React, { useEffect, /* useState, */ useReducer, useCallback, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import './SnakeGameMain.scss';
 import SnakeFood from '../SnakeFood/SnakeFood';
 import Snake from '../Snake/Snake';
+import { VictoryContext } from '../../../context/victory-context';
 
 const initialState = {
     foodPosition: [],
@@ -16,7 +17,7 @@ const initialState = {
     levelNames: ['Slow', 'Medium', 'Fast'],
     levelValue: 1,
     start: false,
-    directionHistory: ['RIGHT']
+    finished: false
 }
 
 const snakeReducer = (prevState, action) => {
@@ -56,7 +57,8 @@ const snakeReducer = (prevState, action) => {
                     [0, 2],
                 ],
                 score: 0,
-                start: false
+                start: false,
+                finished: false
             }
         case 'UPDATE_SCORE':
             return {
@@ -73,6 +75,12 @@ const snakeReducer = (prevState, action) => {
                 ...prevState,
                 start: !prevState.start
             }
+        case 'FINISH_GAME': {
+            return {
+                ...prevState,
+                finished: true
+            }
+        }
         default:
             throw new Error('Should never get there!');
     }
@@ -82,6 +90,8 @@ const SnakeGameMain = props => {
 
     const [ snakeState, dispatch ] = useReducer(snakeReducer, initialState);
     const { foodPosition, direction, headPosition, snakeBody, score, levelNames, levelValue, start } = snakeState;
+
+    const { getVictoryData, setShowModal } = useContext(VictoryContext);
 
     const getRandomNumber = useCallback(() => {
         let number1 = 0;
@@ -131,25 +141,26 @@ const SnakeGameMain = props => {
 
     useEffect(() => { // natychmiastowy ruch głowy w nowym kierunku
         if(headPosition[0] >= 0 && headPosition[0] <= 98 && headPosition[1] >= 0 && headPosition[1] <= 98 && !checkIfHit() && start) {
-            const snakeBodyElements = snakeBody;
-            snakeBodyElements.unshift([headPosition[0], headPosition[1]]);
-            snakeBodyElements.pop();
-            dispatch({ type: 'SET_SNAKE_BODY', snakeBody: snakeBodyElements});
-    
+            
             if(direction === 'RIGHT') {
                 dispatch({ type: 'SET_HEAD_POSITION', headPosition: [headPosition[0], headPosition[1] + 2] });
             } else if (direction === 'LEFT') {
                 dispatch({ type: 'SET_HEAD_POSITION', headPosition: [headPosition[0], headPosition[1] - 2] });
             } else if (direction === 'UP') {
                 dispatch({ type: 'SET_HEAD_POSITION', headPosition: [headPosition[0] - 2, headPosition[1]] });
-            } else {
+            } else if(direction === 'DOWN') {
                 dispatch({ type: 'SET_HEAD_POSITION', headPosition: [headPosition[0] + 2, headPosition[1]] });
             }
+
+            const snakeBodyElements = snakeBody;
+            snakeBodyElements.unshift([headPosition[0], headPosition[1]]);
+            snakeBodyElements.pop();
+            dispatch({ type: 'SET_SNAKE_BODY', snakeBody: snakeBodyElements});
         }
         return () => {};
-        //direction not added on purpose
+        //only direction added on purpose
         //eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [direction, snakeBody, start]);
+    }, [direction/* , snakeBody, start */]);
 
     useEffect(() => { // ruch snake'a w czasie
         let interval = '';
@@ -163,12 +174,7 @@ const SnakeGameMain = props => {
         }
         if(headPosition[0] >= 0 && headPosition[0] <= 98 && headPosition[1] >= 0 && headPosition[1] <= 98 && !checkIfHit() && start) {
             interval = setInterval(() => {
-                const snakeBodyElements = snakeBody;
-                snakeBodyElements.unshift([headPosition[0], headPosition[1]]);
-                snakeBodyElements.pop();
-                dispatch({ type: 'SET_SNAKE_BODY', snakeBody: snakeBodyElements});
-
-
+                
                 if(direction === 'RIGHT') {
                     dispatch({ type: 'SET_HEAD_POSITION', headPosition: [headPosition[0], headPosition[1] + 2] });
                 } else if (direction === 'LEFT') {
@@ -178,6 +184,11 @@ const SnakeGameMain = props => {
                 } else {
                     dispatch({ type: 'SET_HEAD_POSITION', headPosition: [headPosition[0] + 2, headPosition[1]] });
                 }
+
+                const snakeBodyElements = snakeBody;
+                snakeBodyElements.unshift([headPosition[0], headPosition[1]]);
+                snakeBodyElements.pop();
+                dispatch({ type: 'SET_SNAKE_BODY', snakeBody: snakeBodyElements});
             }, level);
         }
         return () => clearInterval(interval);
@@ -191,6 +202,21 @@ const SnakeGameMain = props => {
     useEffect(() => {
         dispatch({ type: 'SET_FOOD_POSITION', foodPosition: getRandomNumber() })
     }, [getRandomNumber]);
+
+    useEffect(() => { // Sprawdzenie czy koniec / pokazanie modala
+        if(headPosition[0] < 0 || headPosition[0] > 98 || headPosition[1] < 0 || headPosition[1] > 98) {
+            getVictoryData({ name: 'Snake Game', score: score });
+            setShowModal(true);
+        }
+        const timeOut = setTimeout(() => {
+            if(start && checkIfHit()) {
+                getVictoryData({ name: 'Snake Game', score: score });
+                setShowModal(true);
+            }
+        }, 300);
+
+        return () => clearTimeout(timeOut);
+    }, [headPosition, getVictoryData, setShowModal, score, checkIfHit, start]);
 
     const setLevelHandler = value => {
         if( (levelValue > 0 && levelValue < 2) || (levelValue === 2 && value === -1) || (levelValue === 0 && value === 1) ) {
