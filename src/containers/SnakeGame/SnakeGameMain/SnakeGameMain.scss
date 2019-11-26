@@ -20,12 +20,13 @@
         @include flexSpaceBetween;
         width: 100%;
         padding: 1em;
+        margin-bottom: 1em;
     }
 
     &-playArea {
         width: 36em;
         height: 36em;
-        border: 5px solid black;
+        border: 5px solid $background-color-second;
         position: relative;
     }
 

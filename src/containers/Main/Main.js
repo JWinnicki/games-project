@@ -6,9 +6,9 @@ import './Main.scss';
 const Main = props => {
     return (
         <div className='Main'>
-            <MainMenuItem icon='card' title='Memory game' to='/MemoryGame' />
-            <MainMenuItem icon='tic-tac-toe' title='Tic Tac game' to='/TicTacGame' />
-            <MainMenuItem icon='card' title='snake - in progress' to='/SnakeGame' />
+            <MainMenuItem icon='snake' title='Snake Game' to='/SnakeGame' />
+            <MainMenuItem icon='card' title='Memory Game' to='/MemoryGame' />
+            <MainMenuItem icon='tic-tac-toe' title='Tic Tac Game' to='/TicTacGame' />
         </div>
     );
 }

@@ -1,0 +1,26 @@
+@import '../../scss/mixins';
+
+.AuthorsMain {
+    width: 100%;
+    min-height: 40em;
+    @include flexCenter;
+
+    &-container {
+        background-color: rgba(255, 255, 255, .8);
+        width: 67em;
+        min-height: 40em;
+        padding: 2em;
+        border-radius: 3px;
+        @include flexSpaceBetweenColumn;
+    }
+}
+
+.IconInfo {
+    @include flexSpaceBetween;
+    width: 70%;
+    padding: 1em;
+
+    &-info {
+        font-size: 1.5em;
+    }
+}
