@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Games-Project/static/css/main.cb1ac43c.chunk.css",
-    "main.js": "/Games-Project/static/js/main.ffd31223.chunk.js",
-    "main.js.map": "/Games-Project/static/js/main.ffd31223.chunk.js.map",
-    "runtime-main.js": "/Games-Project/static/js/runtime-main.08aaa11f.js",
-    "runtime-main.js.map": "/Games-Project/static/js/runtime-main.08aaa11f.js.map",
-    "static/js/2.56ccc3ad.chunk.js": "/Games-Project/static/js/2.56ccc3ad.chunk.js",
-    "static/js/2.56ccc3ad.chunk.js.map": "/Games-Project/static/js/2.56ccc3ad.chunk.js.map",
-    "index.html": "/Games-Project/index.html",
-    "precache-manifest.90aa26649c8a82f7377d32d863963f33.js": "/Games-Project/precache-manifest.90aa26649c8a82f7377d32d863963f33.js",
-    "service-worker.js": "/Games-Project/service-worker.js",
-    "static/css/main.cb1ac43c.chunk.css.map": "/Games-Project/static/css/main.cb1ac43c.chunk.css.map",
-    "static/media/icons.svg": "/Games-Project/static/media/icons.20d8a1a0.svg"
+    "main.css": "/games-groject/static/css/main.cb1ac43c.chunk.css",
+    "main.js": "/games-groject/static/js/main.ffd31223.chunk.js",
+    "main.js.map": "/games-groject/static/js/main.ffd31223.chunk.js.map",
+    "runtime-main.js": "/games-groject/static/js/runtime-main.9c792012.js",
+    "runtime-main.js.map": "/games-groject/static/js/runtime-main.9c792012.js.map",
+    "static/js/2.56ccc3ad.chunk.js": "/games-groject/static/js/2.56ccc3ad.chunk.js",
+    "static/js/2.56ccc3ad.chunk.js.map": "/games-groject/static/js/2.56ccc3ad.chunk.js.map",
+    "index.html": "/games-groject/index.html",
+    "precache-manifest.4a3fc16ca2bcbd5bae685df074e07f1d.js": "/games-groject/precache-manifest.4a3fc16ca2bcbd5bae685df074e07f1d.js",
+    "service-worker.js": "/games-groject/service-worker.js",
+    "static/css/main.cb1ac43c.chunk.css.map": "/games-groject/static/css/main.cb1ac43c.chunk.css.map",
+    "static/media/icons.svg": "/games-groject/static/media/icons.20d8a1a0.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.08aaa11f.js",
+    "static/js/runtime-main.9c792012.js",
     "static/js/2.56ccc3ad.chunk.js",
     "static/css/main.cb1ac43c.chunk.css",
     "static/js/main.ffd31223.chunk.js"
