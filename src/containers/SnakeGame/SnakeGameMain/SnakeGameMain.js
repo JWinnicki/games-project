@@ -18,7 +18,8 @@ const initialState = {
     levelNames: ['Slow', 'Medium', 'Fast'],
     levelValue: 1,
     start: false,
-    finished: false
+    finished: false,
+    mobileControlsSide: 'right'
 }
 
 const snakeReducer = (prevState, action) => {
@@ -59,7 +60,8 @@ const snakeReducer = (prevState, action) => {
                 ],
                 score: 0,
                 start: false,
-                finished: false
+                finished: false,
+                mobileControlsSide: 'right'
             }
         case 'UPDATE_SCORE':
             return {
@@ -82,6 +84,12 @@ const snakeReducer = (prevState, action) => {
                 finished: true
             }
         }
+        case 'CHANGE_MOBILE_SIDE': {
+            return {
+                ...prevState,
+                mobileControlsSide: action.side
+            }
+        }
         default:
             throw new Error('Should never get there!');
     }
@@ -91,7 +99,7 @@ const SnakeGameMain = props => {
 
     //const playArea = useRef();
     const [ snakeState, dispatch ] = useReducer(snakeReducer, initialState);
-    const { foodPosition, direction, headPosition, snakeBody, score, levelNames, levelValue, start } = snakeState;
+    const { foodPosition, direction, headPosition, snakeBody, score, levelNames, levelValue, start, mobileControlsSide } = snakeState;
 
     const { getVictoryData, setShowModal } = useContext(VictoryContext);
 
@@ -238,6 +246,14 @@ const SnakeGameMain = props => {
         dispatch({ type: 'SET_DIRECTION', direction: direction });
     }
 
+    const onMobileControlsSideHandler = () => {
+        if(mobileControlsSide === 'right') {
+            dispatch({ type: 'CHANGE_MOBILE_SIDE', side: 'left' });
+        } else {
+            dispatch({ type: 'CHANGE_MOBILE_SIDE', side: 'right' });
+        }
+    }
+
     return (
         <div className='SnakeGameMain'>
             <div className='SnakeGameMain-container'>
@@ -258,7 +274,7 @@ const SnakeGameMain = props => {
                     <Snake top={headPosition[0]} left={headPosition[1]} body={snakeBody} />
                     <SnakeFood top={foodPosition[0]} left={foodPosition[1]} />
                 </div>
-                <div className='SnakeGameMain-mobileControlsDiv'>
+                <div className='SnakeGameMain-mobileControlsDiv' style={mobileControlsSide === 'right' ? {right: 0} : {left: 0}} >
                     <div className='SnakeGameMain-mobileControlsGrid'>
                         <button className='SnakeGameMain-mobileButton up' onClick={() => onMobileControlsHandlng('UP')}>
                             <Icon icon='arrow' size='tiny' rotate='deg270' color='white' />
@@ -273,7 +289,24 @@ const SnakeGameMain = props => {
                             <Icon icon='arrow' size='tiny' rotate='deg90' color='white' />
                         </button>
                     </div>
-                    <button className='SnakeGameMain-mobileToggleButton'>Change side</button>
+                    <button className='SnakeGameMain-mobileToggleButton' onClick={onMobileControlsSideHandler}>Change side</button>
+                </div>
+                <div className='SnakeGameMain-mobileControlsDivBottom' >
+                    <div className='SnakeGameMain-mobileControlsGrid'>
+                        <button className='SnakeGameMain-mobileButton up' onClick={() => onMobileControlsHandlng('UP')}>
+                            <Icon icon='arrow' size='tiny' rotate='deg270' color='white' />
+                        </button>
+                        <button className='SnakeGameMain-mobileButton left' onClick={() => onMobileControlsHandlng('LEFT')}>
+                            <Icon icon='arrow' size='tiny' rotate='deg180' color='white' />
+                        </button>
+                        <button className='SnakeGameMain-mobileButton right' onClick={() => onMobileControlsHandlng('RIGHT')}>
+                            <Icon icon='arrow' size='tiny' color='white' />
+                        </button>
+                        <button className='SnakeGameMain-mobileButton down' onClick={() => onMobileControlsHandlng('DOWN')}>
+                            <Icon icon='arrow' size='tiny' rotate='deg90' color='white' />
+                        </button>
+                    </div>
+                    <button className='SnakeGameMain-mobileToggleButton' onClick={onMobileControlsSideHandler}>Change side</button>
                 </div>
             </div>
         </div>

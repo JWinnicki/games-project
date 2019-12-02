@@ -24,3 +24,29 @@
         font-size: 1.5em;
     }
 }
+
+@media(max-width: 670px) {
+    .IconInfo {
+        width: 80%;
+    }
+}
+
+@media(max-width: 585px) {
+    .IconInfo {
+        width: 90%;
+    }
+}
+
+@media(max-width: 525px) {
+    .IconInfo {
+        width: 100%;
+    }
+}
+
+@media(max-width: 480px) {
+    .IconInfo {
+        &-info {
+            margin-left: 1em;
+        }
+    }
+}

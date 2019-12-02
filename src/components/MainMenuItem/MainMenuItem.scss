@@ -35,6 +35,24 @@
     }
 }
 
-@media(max-width: 1950px) {
+@media(max-width: 1200px) and (orientation: portrait) {
+    .MainMenuItem {
+        width: 45em;
+    }
+}
 
+@media(max-width: 450px) {
+    .MainMenuItem {
+        width: 35em;
+    }
+}
+
+@media(max-width: 390px) {
+    .MainMenuItem {
+        width: 30em;
+
+        &-h2 {
+            text-align: center;
+        }
+    }
 }

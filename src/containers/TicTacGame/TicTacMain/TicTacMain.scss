@@ -46,3 +46,80 @@
         }
     }
 }
+
+@media(max-width: 880px) {
+    .TicTacMain {
+        &-container {
+            width: 70%;
+        }
+    }
+}
+
+@media(max-width: 760px) {
+    .TicTacMain {
+        &-container {
+            width: 80%;
+        }
+    }
+}
+
+@media(max-width: 705px) {
+    .TicTacMain {
+        &-container {
+            width: 90%;
+        }
+    }
+}
+
+@media(max-width: 610px) {
+    .TicTacMain {
+        &-controls {
+            width: 100%;
+        }
+    }
+}
+
+@media(max-width: 550px) {
+    .TicTacMain {
+        &-container {
+            width: 100%;
+        }
+    }
+}
+
+@media(max-width: 480px) {
+    .TicTacMain {
+        &-controls {
+            font-size: 90%;
+        }
+    }
+}
+
+@media(max-width: 450px) {
+    .TicTacMain {
+        &-controls {
+            display: grid;
+            //grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            justify-content: center;
+            justify-items: center;
+            gap: 1em;
+            margin-bottom: .5em;
+            grid-template-areas: 
+            "MainMenuButton ResetButton"
+            "Player1 Player2";
+        }
+    }
+    .Player1 {
+        grid-area: Player1;
+    }
+    .Player2 {
+        grid-area: Player2;
+    }
+    .MainMenuButton {
+        grid-area: MainMenuButton;
+    }
+    .ResetButton {
+        grid-area: ResetButton;
+    }
+}

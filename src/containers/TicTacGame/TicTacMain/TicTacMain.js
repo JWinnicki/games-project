@@ -84,12 +84,12 @@ const TicTacMain = props => {
         <div className='TicTacMain'>
             <div className='TicTacMain-container'>
                 <div className='TicTacMain-controls'>
-                    <div>
+                    <div className='Player1'>
                         <input className={`TicTacMain-input ${turn === 'X' ? 'TicTacMain-input--active' : ''}`} value={firstPlayerName} onChange={e => setFirstPlayerName(e.target.value)} />
                     </div>
-                    <NavLink to='/' className='button link'>Main Menu</NavLink>
-                    <button className='button' onClick={() => setShouldReset(true)}>Reset</button>
-                    <div>
+                    <NavLink to='/' className='button link MainMenuButton'>Main Menu</NavLink>
+                    <button className='button ResetButton' onClick={() => setShouldReset(true)}>Reset</button>
+                    <div className='Player2'>
                         <input className={`TicTacMain-input ${turn === 'O' ? 'TicTacMain-input--active' : ''}`} value={secondPlayerName} onChange={e => setSecondPlayerName(e.target.value)} />
                     </div>
                 </div>

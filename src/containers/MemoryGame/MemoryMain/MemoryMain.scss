@@ -53,5 +53,40 @@
     }
 } */
 
+@media(max-width: 1370px) and (min-height: 760px) {
+    .MemoryMain {
+        font-size: 120%;
+    }
+}
+
+@media(max-width: 770px) {
+    .MemoryMain {
+        font-size: 110%;
+    }
+}
+
+@media(max-width: 460px) {
+    .MemoryMain {
+        font-size: 90%;
+    }
+}
+
+@media(max-width: 380px) {
+    .MemoryMain {
+        font-size: 85%;
+    }
+}
+
+@media(max-width: 360px) {
+    .MemoryMain {
+        font-size: 80%;
+    }
+}
+
+@media(max-width: 350px) {
+    .MemoryMain {
+        font-size: 70%;
+    }
+}
 
 
