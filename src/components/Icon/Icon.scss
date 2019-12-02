@@ -13,3 +13,24 @@
     height: 10em;
 }
 
+.tiny {
+    width: 2em;
+    height: 2em;
+}
+
+.deg90 {
+    transform: rotate(90deg);
+}
+
+  .deg180 {
+    transform: rotate(180deg);
+}
+
+  .deg270 {
+    transform: rotate(270deg);
+}
+
+.white {
+    fill: white;
+}
+

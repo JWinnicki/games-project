@@ -4,6 +4,7 @@
 .SnakeGameMain {
     width: 100%;
     min-height: 40em;
+    position: relative;
 
     @include flexCenter;
 
@@ -26,7 +27,7 @@
     &-playArea {
         width: 36em;
         height: 36em;
-        border: 5px solid $background-color-second;
+        border: .5em solid $background-color-second;
         position: relative;
     }
 
@@ -61,5 +62,66 @@
     &-scoreDiv {
         min-width: 7em;
     }
+
+    &-mobileControlsDiv {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        @include flexCenterColumn;
+    }
+
+    &-mobileControlsGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 4em);
+        grid-template-rows: repeat(3, 4em);
+        grid-template-areas: 
+            ". up ."
+            "left . right"
+            ". down .";
+    }
+
+    &-mobileButton {
+        @include flexCenterColumn;
+        background-color: $background-color-second;
+        border: none;
+    }
+
+    &-mobileToggleButton {
+        background-color: $background-color-second;
+        margin-top: 1em;
+        color: white;
+        padding: .5em;
+        border: none;
+        text-align: center;
+        font-family: inherit;
+    }
 }
 
+.up {
+    grid-area: up;
+}
+.down {
+    grid-area: down;
+}
+.left {
+    grid-area: left;
+}
+.right {
+    grid-area: right;
+}
+
+@media(max-width: 1130px) {
+    .SnakeGameMain {
+        min-height: 0;
+        
+        &-playArea {
+            width: 34em;
+            height: 34em;
+        }
+    
+        &-container {
+            padding: 1em;
+        }
+    }
+}

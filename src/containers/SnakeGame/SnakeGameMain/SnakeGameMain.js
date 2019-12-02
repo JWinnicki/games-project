@@ -1,17 +1,18 @@
-import React, { useEffect, /* useState, */ useReducer, useCallback, useContext } from 'react';
+import React, { useEffect, /* useState, */ useReducer, useCallback, useContext/* , useRef */ } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import './SnakeGameMain.scss';
 import SnakeFood from '../SnakeFood/SnakeFood';
 import Snake from '../Snake/Snake';
 import { VictoryContext } from '../../../context/victory-context';
+import Icon from '../../../components/Icon/Icon';
 
 const initialState = {
     foodPosition: [],
     direction: 'RIGHT',
-    headPosition: [0, 4],
+    headPosition: [0, 2],
     snakeBody: [
-        [0, 2]
+        [0, 0]
     ],
     score: 0,
     levelNames: ['Slow', 'Medium', 'Fast'],
@@ -52,9 +53,9 @@ const snakeReducer = (prevState, action) => {
                 ...prevState,
                 foodPosition: [],
                 direction: 'RIGHT',
-                headPosition: [0, 4],
+                headPosition: [0, 2],
                 snakeBody: [
-                    [0, 2],
+                    [0, 0],
                 ],
                 score: 0,
                 start: false,
@@ -88,6 +89,7 @@ const snakeReducer = (prevState, action) => {
 
 const SnakeGameMain = props => {
 
+    //const playArea = useRef();
     const [ snakeState, dispatch ] = useReducer(snakeReducer, initialState);
     const { foodPosition, direction, headPosition, snakeBody, score, levelNames, levelValue, start } = snakeState;
 
@@ -232,6 +234,10 @@ const SnakeGameMain = props => {
         dispatch({ type: 'START_GAME' });
     }
 
+    const onMobileControlsHandlng = direction => {
+        dispatch({ type: 'SET_DIRECTION', direction: direction });
+    }
+
     return (
         <div className='SnakeGameMain'>
             <div className='SnakeGameMain-container'>
@@ -251,6 +257,23 @@ const SnakeGameMain = props => {
                 <div className='SnakeGameMain-playArea'>
                     <Snake top={headPosition[0]} left={headPosition[1]} body={snakeBody} />
                     <SnakeFood top={foodPosition[0]} left={foodPosition[1]} />
+                </div>
+                <div className='SnakeGameMain-mobileControlsDiv'>
+                    <div className='SnakeGameMain-mobileControlsGrid'>
+                        <button className='SnakeGameMain-mobileButton up' onClick={() => onMobileControlsHandlng('UP')}>
+                            <Icon icon='arrow' size='tiny' rotate='deg270' color='white' />
+                        </button>
+                        <button className='SnakeGameMain-mobileButton left' onClick={() => onMobileControlsHandlng('LEFT')}>
+                            <Icon icon='arrow' size='tiny' rotate='deg180' color='white' />
+                        </button>
+                        <button className='SnakeGameMain-mobileButton right' onClick={() => onMobileControlsHandlng('RIGHT')}>
+                            <Icon icon='arrow' size='tiny' color='white' />
+                        </button>
+                        <button className='SnakeGameMain-mobileButton down' onClick={() => onMobileControlsHandlng('DOWN')}>
+                            <Icon icon='arrow' size='tiny' rotate='deg90' color='white' />
+                        </button>
+                    </div>
+                    <button className='SnakeGameMain-mobileToggleButton'>Change side</button>
                 </div>
             </div>
         </div>

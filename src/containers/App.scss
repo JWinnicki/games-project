@@ -8,9 +8,8 @@
     padding: 0;
 }
 html {
-    font-size: 62.5%;
+    font-size: 110%; //62.5%
     font-family: sans-serif;
-    
 }
 
 .App {
@@ -33,4 +32,22 @@ header, footer, main {
 
 main {
     margin: 2em;
+}
+
+@media (max-width: 2000px) {
+    html {
+        font-size: 100%; //62.5%
+    }
+}
+
+@media (max-width: 1700px) {
+    html {
+        font-size: 80%; //62.5%
+    }
+}
+
+@media (max-width: 1550px) {
+    html {
+        font-size: 62.5%; //62.5%
+    }
 }
