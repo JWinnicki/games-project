@@ -1,7 +1,7 @@
 {
   "name": "games-project",
   "version": "0.1.0",
-  "homepage": "https://jwinnicki.github.io/games-project/", 
+  "homepage": "https://jwinnicki.github.io/games-project/",
   "private": true,
   "dependencies": {
     "gh-pages": "^2.1.1",
